@@ -2,7 +2,6 @@ package models.valueobjects;
 
 import java.io.Serializable;
 
-// Класс объект-значение Диагонаь
 public class DiagonalRange implements Serializable {
     private int diagonalRange; // Диарозон диагонали
 

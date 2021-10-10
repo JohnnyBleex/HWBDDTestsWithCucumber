@@ -1,35 +1,21 @@
-package helpers;
+package web.helpers;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import web.drivers.WebDriverFactory;
 
 import java.time.Duration;
 
-// Класс ожиданий событий на странице
-public class WaitFor {
-    // Ожидание драйвера браузера
+public class WaitHelper {
     protected static WebDriverWait wait;
-    protected static FluentWait<WebDriver> fluentWait;
 
     // Инициализация ожидания драйвера браузера
-    // Установка таймаута ожидания и интервала опроса
-    public static void initWait(WebDriver driver, Duration timeOut, Duration sleep) {
-        wait = new WebDriverWait(driver, timeOut, sleep);
-    }
-
-    // Инициализация ожидания драйвера браузера
-    // Установка таймаута с игнорированием исключения
-    public static void initFluentWait(WebDriver driver, Duration timeOut, Duration sleep) {
-        fluentWait = new FluentWait<>(driver)
-                .withTimeout(timeOut)
-                .pollingEvery(sleep)
-                .ignoring(StaleElementReferenceException.class);
+// Установка таймаута ожидания и интервала опроса
+    public static void init(Duration timeOut, Duration sleep) {
+        wait = new WebDriverWait(WebDriverFactory.getCurrentDriver(), timeOut, sleep);
     }
 
     // Ожидание наличия элемента по локатору
@@ -63,13 +49,8 @@ public class WaitFor {
     }
 
     // Ожидание появления в списке продуктов в первой позиции заданного продукта
-    public static void firstProductMustBe(By by, String product) {
+    public static void firstProductMustBe(By webElement, String product) {
         wait.until((ExpectedCondition<Boolean>) webDriver ->
-                webDriver.findElement(by).getText().contains(product));
-    }
-
-    // Ожидание кликабельности элемента по локатору
-    public static void firstProductMustBe(By by) {
-        fluentWait.until(ExpectedConditions.elementToBeClickable(by));
+                webDriver.findElement(webElement).getText().contains(product));
     }
 }

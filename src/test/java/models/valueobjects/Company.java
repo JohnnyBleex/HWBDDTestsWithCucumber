@@ -2,20 +2,21 @@ package models.valueobjects;
 
 import java.io.Serializable;
 
-// Класс объект-значение Производитель
-public class Company  implements Serializable {
-    private String company; // Производитель
+public class Company implements Serializable {
+    // Производитель
+    private String company;
 
-    public Company(){
+    // Конструктор по умолчанию
+    public Company() {
 
     }
 
-    public Company(String company){
-        if (!company.isBlank()||!company.isEmpty()){
+    // Конструктор с проверкой
+    public Company(String company) {
+        if (!company.isBlank() || !company.isEmpty())
             this.company = company;
-        }else {
-            throw new IllegalArgumentException("Наименование производитель не может быть пустым!");
-        }
+        else
+            throw new IllegalArgumentException("Наименование производителя не может быть пустым!");
     }
 
     // Геттер
@@ -24,7 +25,7 @@ public class Company  implements Serializable {
     }
 
     // Переопределенный метод сравнения
-    public boolean equals(Company otherCompany){
+    public boolean equals(Company otherCompany) {
         return this.company.equals(otherCompany.company);
     }
 }

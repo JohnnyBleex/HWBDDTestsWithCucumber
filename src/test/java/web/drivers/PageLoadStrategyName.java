@@ -1,4 +1,4 @@
-package webdriverfactory;
+package web.drivers;
 
 // Имена стратегии загрузки страници
 public enum PageLoadStrategyName {

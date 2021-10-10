@@ -1,4 +1,4 @@
-package webdriverfactory;
+package web.drivers;
 
 import org.openqa.selenium.PageLoadStrategy;
 
