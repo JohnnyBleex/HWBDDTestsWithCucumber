@@ -6,11 +6,11 @@ public class GpuType implements Serializable {
     // Тип диспретной видео карты
     private String gpuType;
 
-    GpuType(){
+    public GpuType(){
 
     }
 
-    GpuType(String gpuType){
+    public GpuType(String gpuType){
         if (!gpuType.isBlank() || !gpuType.isEmpty())
             this.gpuType = gpuType;
         else

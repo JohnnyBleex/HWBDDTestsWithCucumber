@@ -4,11 +4,11 @@ public class ProcessorType {
     //тип процессора
     private String processorType;
 
-    ProcessorType(){
+    public ProcessorType(){
 
     }
 
-    ProcessorType(String processorType){
+    public ProcessorType(String processorType){
         if (!processorType.isBlank() || !processorType.isEmpty())
             this.processorType = processorType;
         else

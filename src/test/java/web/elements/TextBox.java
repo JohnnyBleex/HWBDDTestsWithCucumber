@@ -9,16 +9,18 @@ public class TextBox extends BaseElement{
     }
 
     // Нажатие на текстовое поле ввода
-    public void click() {
+    public TextBox click() {
         // Ожидание кликабельности флажка текстового поля ввода
         WaitHelper.clickabilityOfElement(webElement);
         webElement.click();
+        return this;
     }
 
     // Ввод значения в текстовое поле ввода
-    public void setValue(String value) {
+    public TextBox setValue(String value) {
         // Ожидание кликабельности флажка текстового поля ввода
         WaitHelper.clickabilityOfElement(webElement);
         webElement.sendKeys(value);
+        return this;
     }
 }

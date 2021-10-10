@@ -23,33 +23,34 @@ public class NoteBooksPage extends BasePage{
     @FindBy(xpath = "//header")
     private WebElement mainBlock;
 
+    @FindBy(xpath = "//span[text()= 'Производитель']/parent::a/following-sibling::div//input[@class='ui-input-search__input ui-input-search__input_list']")
+    private WebElement textBoxCompany;
     @FindBy(xpath = "//span[text()='Производитель']/parent::a/following-sibling::div//div[@class='ui-checkbox-group ui-checkbox-group_list']")
     private WebElement divCompany;
 
     @FindBy(xpath = "//div[@class='ui-list-controls ui-collapse ui-collapse_list']//span[contains(text(), 'Объем оперативной памяти')]")
     private WebElement dropDownMenuRAM;
-
     @FindBy(xpath = "//span[text()='Объем оперативной памяти (ГБ)']/parent::a/following-sibling::div//div[@class='ui-list-controls__content']")
     private WebElement divRAM;
 
     @FindBy(xpath = "//span[text()='Диагональ экрана (дюйм)']")
     private WebElement dropDownMenuDiagonal;
-
     @FindBy(xpath = "//input[@placeholder='от 11.6']")
     private WebElement textBoxDiagonalRangeFrom;
-
     @FindBy(xpath = "//input[@placeholder='до 17.3']")
     private WebElement textBoxDiagonalRangeApTo;
 
     @FindBy(xpath = "//a/span[text()='Линейка процессора']")
     private WebElement dropDownMenuProcessorsType;
-
+    @FindBy(xpath = "//span[text()= 'Линейка процессора']/parent::a/following-sibling::div//input[@class='ui-input-search__input ui-input-search__input_list']")
+    private WebElement textBoxProcessorType;
     @FindBy(xpath = "//a/span[text()='Линейка процессора']/parent::a/following-sibling::div//div[@class='ui-checkbox-group ui-checkbox-group_list']")
     private WebElement divProcessorType;
 
     @FindBy(xpath = "//a/span[text()='Модель дискретной видеокарты']")
     private WebElement dropDownMenuModelGPUCard;
-
+    @FindBy(xpath = "//span[text()= 'Модель дискретной видеокарты']/parent::a/following-sibling::div//input[@class='ui-input-search__input ui-input-search__input_list']")
+    private WebElement textBoxModelGPUCard;
     @FindBy(xpath = "//a/span[text()='Модель дискретной видеокарты']/parent::a/following-sibling::div//div[@class='ui-checkbox-group ui-checkbox-group_list']")
     private WebElement divModelGPUCard;
     // Кнопка "Применить"
@@ -76,13 +77,16 @@ public class NoteBooksPage extends BasePage{
     // Фильтры
     // Фильтр "Производитель"
     // Чекбокс "Производитель"
+    public TextBox textBoxCompany(){
+        return new TextBox(textBoxCompany);
+    }
     public CheckBox checkBoxCompany(String company) {
         return new CheckBox(findCheckBoxCompany(company));
     }
     // Поиск чекбокса "Производитель"
     private WebElement findCheckBoxCompany(String company) {
         WaitHelper.visibilityOfElement(divCompany);
-        return divCompany.findElement(By.xpath("./label/span[contains(text(), \"" + company + "\")]"));
+        return divCompany.findElement(By.xpath("//label/span[contains(text(), \"" + company + "\")]"));
     }
 
     // Фильтр "Объем оперативной памяти"
@@ -97,7 +101,7 @@ public class NoteBooksPage extends BasePage{
     // Поиск чекбокса "Объем оперативной памяти"
     private WebElement findCheckBoxRAM(String ram) {
         WaitHelper.visibilityOfElement(divRAM);
-        return divRAM.findElement(By.xpath("./label/span[contains(text(), \"" + ram + "\")]"));
+        return divRAM.findElement(By.xpath("//label/span[contains(text(), \"" + ram + "\")]"));
     }
 
     // Фильтор диагональ
@@ -119,14 +123,18 @@ public class NoteBooksPage extends BasePage{
     public DropDownMenu dropDownMenuProcessorsType(){
         return new DropDownMenu(dropDownMenuProcessorsType);
     }
+    // Текстбокс тип процессора
+    public TextBox textBoxProcessorType(){
+        return new TextBox(textBoxProcessorType);
+    }
     // Чекбокс тип роцессора
-    public CheckBox processorType(String processorName){
+    public CheckBox checkBoxProcessorType(String processorName){
         return new CheckBox(findProcessorType(processorName));
     }
     // Поиск чекбокса процессор
     private WebElement findProcessorType(String processorName){
         WaitHelper.visibilityOfElement(divProcessorType);
-        return divProcessorType.findElement(By.xpath("./label/span[contains(text(), \"" + processorName + "\")]"));
+        return divProcessorType.findElement(By.xpath("//label/span[contains(text(), \"" + processorName + "\")]"));
     }
 
     // Фильтр тип дискретной видеокарты
@@ -134,14 +142,17 @@ public class NoteBooksPage extends BasePage{
     public DropDownMenu dropDownMenuModelGPUCard(){
         return new DropDownMenu(dropDownMenuModelGPUCard);
     }
+    public TextBox textBoxModelGPUCard(){
+        return new TextBox(textBoxModelGPUCard);
+    }
     // Чекбокс модель видеокарты
-    public CheckBox modelGPUCard(String gpuName){
+    public CheckBox checkBoxModelGPUCard(String gpuName){
         return new CheckBox(findModelGPUCard(gpuName));
     }
     // Поиск чекбокса видеокарты
     private WebElement findModelGPUCard(String gpuName){
         WaitHelper.visibilityOfElement(divModelGPUCard);
-        return divModelGPUCard.findElement(By.xpath("./label/span[contains(text(), \"" + gpuName + "\")]"));
+        return divModelGPUCard.findElement(By.xpath("//label/span[contains(text(), \"" + gpuName + "\")]"));
     }
 
     // кнопка применить

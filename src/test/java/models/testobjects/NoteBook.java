@@ -10,7 +10,7 @@ public class NoteBook {
     private ProcessorType processorType;
     private GpuType gpuType;
 
-    NoteBook(){
+    public NoteBook(){
 
     }
 
